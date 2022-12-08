@@ -1,0 +1,63 @@
+Prueba de desarrollo
+
+Esta prueba esta disenada para ser resuelta en un promedio de 4 a 5 hrs.
+
+1) Usando el manejador de base de datos MySQL y tablas tipo InnoDB 
+	a) Crea una base de datos "empresa" que contenga las tablas y campos listadas debajo: 
+   	b) Llenar las tablas con datos de prueba.
+   	c) El usuario y contraseña que coloquen en sus archivos de configuracion
+	 para acceder a estas bd debe ser usuario=root, contraseña=sistemas
+
+[productos]
+IDMATERIAL	VARCHAR(20)
+DESCRIPCION	VARCHAR(60)
+UNIDADMEDIDA	VARCHAR(10)
+PRECIO1	DOUBLE(13,3)
+
+
+[clientes]
+IDCLIENTE	INT(11)
+RAZON_SOCIAL	VARCHAR(60)
+RFC		VARCHAR(15)
+
+
+[documento]
+IDCODIGO	INT(11)
+IDCLIENTE	INT(11)
+RAZON_SOCIAL	VARCHAR(60)
+RFC		VARCHAR(15)
+SUBTOTAL	DOUBLE(13,3)
+IVA		DOUBLE(13,3)
+TOTAL		DOUBLE(13,3)
+
+
+[documentorenglon]
+IDCODIGO	INT(11)
+IDMATERIAL	VARCHAR(20)
+UNIDAD_MEDIDA	VARCHAR(10)
+CANTIDAD	DOUBLE(13,3)
+PRECIO1	DOUBLE(13,3)
+
+2) Crear una pantalla principal y dentro de ella:
+	1) Seccion para productos, donde se pueda dar de alta, baja y modificar los productos.
+	2) Seccion de clientes, donde se pueda dar de alta, baja y modificar los clientes
+	3) Seccion de ventas donde se pueda generar una venta, Una venta debe estar formada por el cliente y uno o mas materiales, la secuencia del proceso:
+		a) Localizar a un cliente (Se debe validar que el cliente exista en la base de datos), y mostrar la informacion de RFC y RAZON SOCIAL.
+		b) Localizar y agregar un material, proporcionando la cantidad que se desea vender. (Se debe poder agregar uno o varios materiales)
+		c) Guardar la venta, afectando los registro correspondientes de [documento] y [documentorenglon].
+
+
+3) Realizar un reporte con una sola consulta SQL que muestre un concentrado de las ventas por producto, el reporte debe contener, IDMATERIAL, DESCRIPCION, TOTAL DE PIEZAS VENDIDAS, SUBTOTAL. (El reporte debe mostrar un formato entendible y amigable)
+
+4) Relizar un reporte con una sola consulta SQL que mueste el total de ventas por Clientes, el reporte debe contener IDCLIENTE, RFC, RAZON_SOCIAL, SUBTOTAL, IVA, TOTAL. (El reporte debe mostrar un formato entendible y amigable)
+
+5) Enviar en un archivo comprimido:
+	a) Base datos en archivo .sql
+	b) Archivos de script, php, js, css, etc.
+	c) Proporcionar archivo .txt con las instrucción de las rutas de los scripst en el servidor apache y cualquier detalle adicional para el funcionamiento del los scripts. 
+
+Nota. Se puede utilizar PHP,JS,CSS,JQUERY,JQUERYUI,BOOTSTRAP
+Nota. El diseno es libre, se evaluara:
+	a) La forma de tratar la información y el orden.
+	b) Seguimiento de instrucciones.
+	c) Dominio de PHP y MySQL.
