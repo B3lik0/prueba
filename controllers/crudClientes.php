@@ -6,20 +6,9 @@ if (isset($_POST["guardarCliente"])) {
 	ActualizarCliente();
 } elseif (isset($_GET["delete"])) {
 	BorrarUsuario();
-} elseif (isset($_POST["usuario"])) {
+} elseif (isset($_POST["cliente"])) {
 	GetUsuario();
 }
-
-function GetUsuario()
-{
-	include("../config/config.php");
-	$cliente = json_decode($_POST['id'], true);
-
-	$sql = "SELECT * FROM clientes WHERE IDCLIENTE = '$cliente' ";
-	$result = mysqli_query($mysqli, $sql);
-	echo "hola";
-}
-
 
 function GuardarCliente()
 {
@@ -81,4 +70,13 @@ function BorrarUsuario()
 		echo '</script>';
 	}
 	header('Location: ../clientes.php');
+}
+
+function GetUsuario()
+{
+	include("../config/config.php");
+	$cliente = $_POST['cliente'];
+	$sql = "SELECT * FROM clientes WHERE IDCLIENTE = '$cliente' ";
+	$result = mysqli_query($mysqli, $sql);
+	echo json_encode(mysqli_fetch_assoc($result));
 }

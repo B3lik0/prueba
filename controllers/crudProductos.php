@@ -6,6 +6,8 @@ if (isset($_POST["guardarProducto"])) {
 	ActualizarProducto();
 } elseif (isset($_GET["delete"])) {
 	BorrarProducto();
+} elseif (isset($_POST["producto"])) {
+	GetProducto();
 }
 
 function GuardarProducto()
@@ -69,4 +71,12 @@ function BorrarProducto()
 		echo '</script>';
 	}
 	header('Location: ../productos.php');
+}
+function GetProducto()
+{
+	include("../config/config.php");
+	$producto = $_POST['producto'];
+	$sql = "SELECT * FROM productos WHERE id = '$producto' ";
+	$result = mysqli_query($mysqli, $sql);
+	echo json_encode(mysqli_fetch_array($result));
 }

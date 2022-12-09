@@ -21,6 +21,7 @@ function filterRecord($query)
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Productos</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
   <script src="js/ventas.js"></script>
 </head>
 
@@ -29,57 +30,65 @@ function filterRecord($query)
 
   <div class="container">
 
-  Datos Del Cliente
-    <textarea name="datosCliente" id="datosCliente" cols="30" rows="10"></textarea>
-    
-    <label><b>Seleccione el cliente</b></label>
-    <select name='cliente' id='cliente' class='select' onchange="infoCliente(this)">
-      <option></option>
-      <?php
-      $i = 1;
-      $text = "";
-      while ($array = $clientes->fetch_assoc()) {
-        $text .= "<option value=" . $array['IDCLIENTE'] . ">" . $array['RFC'] . "</option>";
-        $i++;
-      }
-      echo $text;
-      ?>
-    </select>
-    
-   
+    <div>
+      <label><b>Seleccione el cliente</b></label>
+      <select name='cliente' id='cliente' class='select' onchange="infoCliente(this)">
+        <option></option>
+        <?php
+        $i = 1;
+        $text = "";
+        while ($array = $clientes->fetch_assoc()) {
+          $text .= "<option value=" . $array['IDCLIENTE'] . ">" . $array['RFC'] . "</option>";
+          $i++;
+        }
+        echo $text;
+        ?>
+      </select>
+    </div>
+    <div>
+      <label><b>Datos del cliente</b></label>
+      <input type="text" uns name="datosCliente" id="datosCliente" cols="20" rows="2" readonly>
+      <input type="text" uns name="datosCliente2" id="datosCliente2" cols="20" rows="2" readonly>
+    </div>
 
-    <label><b>Seleccione el producto</b></label>
-    <select name='producto' id='producto' class='select'>
-      <option></option>
-      <?php
-      $i = 1;
-      $text = "";
-      while ($array = $productos->fetch_assoc()) {
-        $text .= "<option value=" . $array['IDMATERIAL'] . ">" . $array['DESCRIPCION'] . "</option>";
-        $i++;
-      }
-      echo $text;
-      ?>
-    </select>
+    <div>
+      <label><b>Seleccione el producto</b></label>
+      <select name='producto' id='producto' class='select' onchange="infoProducto(this)">
+        <option></option>
+        <?php
+        $i = 1;
+        $text = "";
+        while ($array = $productos->fetch_assoc()) {
+          $text .= "<option value=" . $array['id'] . ">" . $array['DESCRIPCION'] . "</option>";
+          $i++;
+        }
+        echo $text;
+        ?>
+      </select>
 
-    <label><b>Cantidad de piezas</b></label>
-    <input type="number" name="cantidad" id="cantidad" required>
+      <label><b>Cantidad de piezas</b></label>
+      <input type="number" name="cantidad" id="cantidad" required>
 
-    <button class="button is-primary is-small" name="buttonTabla" id="buttonTabla">Agregar</button>
+      <button class="button is-primary is-small" name="buttonTabla" id="buttonTabla">Agregar</button>
+    </div>
+
+
   </div>
 
   <br>
 
-  <form action="controllers/crudVentas.php" method="POST">
-    <div class="container" id="divTabla">
-      <table class="table" id="tablaProductos" border="1px">
-        <th>Producto</th>
-        <th>Cantidad</th>
-      </table>
-      <button class="button is-info is-small" name="guardarVenta">Guardar</button>
-    </div>
-  </form>
-
+  <div class="container" id="divTabla">
+    <table class="table" id="tablaProductos" border="1px">
+      <th>Eliminar</th>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Unidad</th>
+      <th>Subtotal</th>
+      <th>IVA</th>
+      <th>Total</th>
+    </table>
+    <button class="button is-info is-small" name="buttonGuardar" id="buttonGuardar">Guardar</button>
+  </div>
 
 </body>
 

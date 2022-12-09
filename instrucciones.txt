@@ -21,22 +21,22 @@ RAZON_SOCIAL	VARCHAR(60)
 RFC		VARCHAR(15)
 
 
-[documento]
-IDCODIGO	INT(11)
-IDCLIENTE	INT(11)
-RAZON_SOCIAL	VARCHAR(60)
-RFC		VARCHAR(15)
-SUBTOTAL	DOUBLE(13,3)
-IVA		DOUBLE(13,3)
-TOTAL		DOUBLE(13,3)
+[documento] ---- de toda la venta (o solo de un producto?)
+IDCODIGO	INT(11)  ----PK
+IDCLIENTE	INT(11) ------ cliente 
+RAZON_SOCIAL	VARCHAR(60) ------ cliente
+RFC		VARCHAR(15) ---- cliente
+SUBTOTAL	DOUBLE(13,3) ------- tabla (sumado al final)
+IVA		DOUBLE(13,3) ------ tabla (sumado al final)
+TOTAL		DOUBLE(13,3) ----- tabla  (sumado al final)
 
 
 [documentorenglon]
-IDCODIGO	INT(11)
-IDMATERIAL	VARCHAR(20)
-UNIDAD_MEDIDA	VARCHAR(10)
-CANTIDAD	DOUBLE(13,3)
-PRECIO1	DOUBLE(13,3)
+IDCODIGO	INT(11) ----- FK documento 
+IDMATERIAL	VARCHAR(20) ----- tabla
+UNIDAD_MEDIDA	VARCHAR(10) ----- unidad medida
+CANTIDAD	DOUBLE(13,3) ------ cantidad de unidades de medida ?
+PRECIO1	DOUBLE(13,3) ------- total de venta o precio del producto?
 
 2) Crear una pantalla principal y dentro de ella:
 	1) Seccion para productos, donde se pueda dar de alta, baja y modificar los productos.
@@ -47,9 +47,14 @@ PRECIO1	DOUBLE(13,3)
 		c) Guardar la venta, afectando los registro correspondientes de [documento] y [documentorenglon].
 
 
-3) Realizar un reporte con una sola consulta SQL que muestre un concentrado de las ventas por producto, el reporte debe contener, IDMATERIAL, DESCRIPCION, TOTAL DE PIEZAS VENDIDAS, SUBTOTAL. (El reporte debe mostrar un formato entendible y amigable)
+3) Realizar un reporte con una sola consulta SQL que muestre un concentrado de las 
+ventas por producto, el reporte debe contener,
+ IDMATERIAL, DESCRIPCION, TOTAL DE PIEZAS VENDIDAS, SUBTOTAL. (El reporte debe mostrar un formato entendible y amigable)
 
-4) Relizar un reporte con una sola consulta SQL que mueste el total de ventas por Clientes, el reporte debe contener IDCLIENTE, RFC, RAZON_SOCIAL, SUBTOTAL, IVA, TOTAL. (El reporte debe mostrar un formato entendible y amigable)
+4) Relizar un reporte con una sola consulta SQL que mueste el 
+total de ventas por Clientes, el reporte debe contener 
+IDCLIENTE, RFC, RAZON_SOCIAL, SUBTOTAL, IVA, TOTAL. 
+(El reporte debe mostrar un formato entendible y amigable)
 
 5) Enviar en un archivo comprimido:
 	a) Base datos en archivo .sql
